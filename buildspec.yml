@@ -29,3 +29,5 @@ phases:
       - echo Pushing the Docker image...
       - docker push ${ECR_REPO_URL}:${IMAGE_TAG}
       - docker push ${ECR_REPO_URL}:$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | awk '{string=substr($0, 1, 7); print string;}')
+      - echo finished
+
