@@ -21,7 +21,7 @@ phases:
       - echo Building the Docker image...
       - ls -la /bin/sh
       - bash -c 'echo ${ECR_REPO_URL}:${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7}'
-      - cd amazon-linux-docker-images && docker build -t ${ECR_REPO_URL}:${IMAGE_TAG} -t ${ECR_REPO_URL}:${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7} .
+      - cd amazon-linux-docker-images && docker build -t ${ECR_REPO_URL}:${IMAGE_TAG} -t ${ECR_REPO_URL}:$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | awk '{string=substr($0, 1, 7); print string;}') .
       - docker images
   post_build:
     commands:
