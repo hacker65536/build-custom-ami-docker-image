@@ -19,7 +19,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - bach -c 'echo ${ECR_REPO_URL}:${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7}'
+      - bash -c 'echo ${ECR_REPO_URL}:${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7}'
       - cd amazon-linux-docker-images && docker build -t ${ECR_REPO_URL}:${IMAGE_TAG} -t ${ECR_REPO_URL}:${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7} .
       - docker images
   post_build:
