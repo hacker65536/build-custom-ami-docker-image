@@ -9,9 +9,9 @@ cat Dockerfile
 
 cat <<'EOF' > Dockerfile
 FROM scratch
-ARG PACKER_VERSION=0.9.0
+ARG PACKER_VERSION=0.12.3
 ARG TERRAFORM_VERSION=0.9.5
-ARG ANSIBLE_VERSION=2.2.0.0
+ARG ANSIBLE_VERSION=2.2.2.0
 ADD amzn-container-minimal-2017.03.0.20170401-x86_64.tar.xz /
 RUN yum install -y jq python27-devel openssl-devel openssh-clients libffi-devel gcc unzip; yum clean all
 RUN curl -s -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py && pip install ansible && pip install awscli
